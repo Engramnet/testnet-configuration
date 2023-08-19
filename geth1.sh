@@ -1,0 +1,59 @@
+nohup geth \
+	  --http \
+	  --http.port 8545 \
+	  --http.api=eth,net,web3,admin,engine,txpool,debug,personal \
+	  --http.addr=0.0.0.0 \
+	  --http.vhosts=* \
+	  --http.corsdomain=* \
+	  --ws \
+	  --ws.api=eth,net,web3,admin,engine,txpool,debug,personal \
+      --ws.port 8546 \
+      --ws.addr=0.0.0.0 \
+      --rpc.allow-unprotected-txs \
+      --rpc.gascap=50000000 \
+      --gpo.blocks=20 \
+      --gpo.ignoreprice=2 \
+      --gpo.maxprice=5000000000 \
+      --gpo.percentile=60 \
+	  --identity "Engram-Testnet" \
+	  --light.maxpeers 30 \
+	  --bloomfilter.size 2048 \
+      --ethstats "engramnetwork:engramnetwork@0.0.0.0:5555" \
+      --gcmode=archive \
+	  --cache 1024 \
+	  --cache.blocklogs 32 \
+	  --cache.database 50 \
+	  --cache.gc 25 \
+	  --cache.trie 15 \
+	  --metrics.influxdb \
+	  --metrics.expensive \
+	  --metrics.addr "127.0.0.1" \
+	  --metrics.port "6060" \
+	  --metrics.influxdb.username "test" \
+	  --metrics.influxdb.password "test" \
+	  --metrics.influxdb.endpoint "http://localhost:8086" \
+	  --metrics.influxdb.database "geth" \
+	  --log.vmodule "eth/*=3,p2p=3" \
+      --log.rotate \
+	  --log.compress \
+	  --log.debug \
+	  --log.maxsize 100 \
+	  --log.maxage 5 \
+	  --log.maxbackups 10 \
+	  --pprof \
+	  --pprof.addr "0.0.0.0" \
+	  --pprof.port "6060" \
+	  --networkid 129 \
+	  --datadir "/home/geth/testnet/geth/1" \
+      --authrpc.addr="localhost" \
+	  --authrpc.port 8551 \
+	  --authrpc.vhosts="localhost" \
+      --authrpc.jwtsecret=/home/geth/testnet/output/el/jwtsecret \
+      --miner.gaslimit 30000000 \
+      --miner.gasprice 45000000000 \
+	  --port 30303 \
+	  --discovery.port 30303 \
+	  --verbosity 3 \
+	  --syncmode full \
+	  --log.rotate \
+	  > /home/geth/testnet/logs/geth-1.log &
